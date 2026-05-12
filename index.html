@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tradazone — Accept crypto payments and send professional invoices. Multi-chain support for Ethereum, Stellar, and Starknet." />
+  <meta property="og:title" content="Tradazone — Crypto Invoicing & Payments" />
+  <meta property="og:description" content="Accept crypto payments and send professional invoices. Multi-chain support for Ethereum, Stellar, and Starknet." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tradazone.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Tradazone — Crypto Invoicing & Payments</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#5B21B6',
+              light: '#7C3AED',
+              dark: '#3B0764',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-text {
+      background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-bg {
+      background: radial-gradient(ellipse at 60% 0%, rgba(124,58,237,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 10% 80%, rgba(6,182,212,0.1) 0%, transparent 50%);
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl text-white">
+        <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-white text-sm font-black">T</div>
+        Tradazone
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+        <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#how-it-works" class="hover:text-white transition-colors">How it works</a>
+        <a href="#networks" class="hover:text-white transition-colors">Networks</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://app.tradazone.com/signin" class="text-sm font-medium text-gray-300 hover:text-white transition-colors hidden sm:block">Sign in</a>
+        <a href="https://app.tradazone.com/signup" class="text-sm font-semibold bg-brand hover:bg-brand-light text-white px-4 py-2 rounded-lg transition-colors">
+          Get started
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg pt-32 pb-24 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 bg-brand/10 border border-brand/30 text-brand-light text-xs font-semibold px-4 py-2 rounded-full mb-8">
+        <span class="w-2 h-2 rounded-full bg-brand-light animate-pulse"></span>
+        Multi-chain crypto payments
+      </div>
+      <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+        Invoice &amp; accept<br />
+        <span class="gradient-text">crypto payments</span>
+      </h1>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Send professional invoices, create payment checkouts, and get paid directly into your wallet — on Ethereum, Stellar, and Starknet.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://app.tradazone.com/signup" class="bg-brand hover:bg-brand-light text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg">
+          Start for free
+        </a>
+        <a href="#how-it-works" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg">
+          See how it works
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero visual: stats bar -->
+    <div class="max-w-4xl mx-auto mt-20 grid grid-cols-3 gap-6">
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-white mb-1">3</div>
+        <div class="text-sm text-gray-400">Blockchain networks</div>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-white mb-1">0%</div>
+        <div class="text-sm text-gray-400">Platform fee</div>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-white mb-1">∞</div>
+        <div class="text-sm text-gray-400">Invoices &amp; checkouts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-24 px-6 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">Everything you need to get paid</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">Built for crypto-native merchants who want professional tools without the overhead.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">📄</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Professional Invoices</h3>
+          <p class="text-gray-400 leading-relaxed">Create, send, and track invoices with PDF export and automated email delivery. Customers pay directly in crypto.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">🔗</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Payment Checkouts</h3>
+          <p class="text-gray-400 leading-relaxed">Generate shareable payment links in seconds. Customers connect their wallet and pay — no account needed.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">⚡</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Real-time Payment Detection</h3>
+          <p class="text-gray-400 leading-relaxed">Payments are detected on-chain the moment they land. No polling delays, no manual confirmation.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">👥</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Customer Management</h3>
+          <p class="text-gray-400 leading-relaxed">Maintain a clean client directory. Add contacts, track payment history, and send invoices with one click.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">📦</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Product Catalog</h3>
+          <p class="text-gray-400 leading-relaxed">Save products and services to your catalog. Add them to invoices instantly without re-entering details.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">🔐</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Wallet-based Auth</h3>
+          <p class="text-gray-400 leading-relaxed">No passwords, no email signup. Sign in with your existing crypto wallet — your keys, your account.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" class="py-24 px-6 bg-gray-900/50 border-t border-gray-800">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">How it works</h2>
+        <p class="text-gray-400 text-lg">From signup to paid in three steps.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-full bg-brand flex items-center justify-center text-white font-bold text-xl mx-auto mb-5">1</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Connect your wallet</h3>
+          <p class="text-gray-400">Sign in with MetaMask, Freighter, Lobstr, Argent, or Braavos. No registration form, no password.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-full bg-brand flex items-center justify-center text-white font-bold text-xl mx-auto mb-5">2</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Create an invoice or checkout</h3>
+          <p class="text-gray-400">Add line items, set an amount, and choose which wallet address receives the payment.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-full bg-brand flex items-center justify-center text-white font-bold text-xl mx-auto mb-5">3</div>
+          <h3 class="text-xl font-semibold text-white mb-3">Get paid on-chain</h3>
+          <p class="text-gray-400">Share the payment link. The customer pays with their wallet. Funds land directly in yours — no intermediary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Networks -->
+  <section id="networks" class="py-24 px-6 border-t border-gray-800">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">Multi-chain by design</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">Your customers pay on their preferred chain. You receive funds on yours.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center hover:border-blue-500/50 transition-colors">
+          <div class="text-5xl mb-4">⟠</div>
+          <h3 class="text-xl font-semibold text-white mb-2">Ethereum</h3>
+          <p class="text-gray-400 text-sm">EVM-compatible. Accept ETH via MetaMask, Phantom, Coinbase Wallet, and any EIP-6963 provider.</p>
+        </div>
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center hover:border-cyan-500/50 transition-colors">
+          <div class="text-5xl mb-4">✦</div>
+          <h3 class="text-xl font-semibold text-white mb-2">Stellar</h3>
+          <p class="text-gray-400 text-sm">Fast, low-fee payments in XLM. Works with Freighter and Lobstr wallet extensions.</p>
+        </div>
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center hover:border-purple-500/50 transition-colors">
+          <div class="text-5xl mb-4">◈</div>
+          <h3 class="text-xl font-semibold text-white mb-2">Starknet</h3>
+          <p class="text-gray-400 text-sm">ZK-rollup scalability. Accept STRK via Argent X and Braavos wallets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 border-t border-gray-800">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-5xl font-extrabold text-white mb-5">Ready to get paid?</h2>
+      <p class="text-gray-400 text-xl mb-10">Connect your wallet and send your first invoice in under two minutes.</p>
+      <a href="https://app.tradazone.com/signup" class="inline-block bg-brand hover:bg-brand-light text-white font-semibold px-10 py-5 rounded-xl transition-colors text-xl">
+        Launch the app →
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 font-bold text-gray-400">
+        <div class="w-7 h-7 rounded-md bg-brand flex items-center justify-center text-white text-xs font-black">T</div>
+        Tradazone
+      </div>
+      <div class="flex gap-8 text-sm text-gray-500">
+        <a href="https://app.tradazone.com" class="hover:text-white transition-colors">App</a>
+        <a href="https://github.com/Blockora-dex" class="hover:text-white transition-colors">GitHub</a>
+      </div>
+      <div class="text-sm text-gray-600">© 2025 Tradazone. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
