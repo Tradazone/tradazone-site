@@ -60,7 +60,7 @@ A      @      185.199.108.153
 A      @      185.199.109.153
 A      @      185.199.110.153
 A      @      185.199.111.153
-CNAME  www    blockora-dex.github.io
+CNAME  www    tradazone.github.io
 ```
 
 Then in **GitHub repo → Settings → Pages → Custom domain**, enter `tradazone.com` and enable **Enforce HTTPS**.
