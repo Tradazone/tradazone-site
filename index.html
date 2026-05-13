@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tradazone — Accept crypto payments and send professional invoices. Multi-chain support for Ethereum, Stellar, and Starknet." />
-  <meta property="og:title" content="Tradazone — Crypto Invoicing & Payments" />
-  <meta property="og:description" content="Accept crypto payments and send professional invoices. Multi-chain support for Ethereum, Stellar, and Starknet." />
+  <meta name="description" content="Tradazone — Transforming payment in Africa with cryptocurrency. Send invoices, create checkout links, and get paid seamlessly." />
+  <meta property="og:title" content="Tradazone — Crypto Payments for Africa" />
+  <meta property="og:description" content="Transforming payment in Africa with cryptocurrency. Send invoices, create checkout links, and get paid seamlessly." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://blockora-dex.github.io/tradazone-site/" />
+  <meta property="og:url" content="https://tradazone.com" />
   <meta name="twitter:card" content="summary_large_image" />
-  <title>Tradazone — Crypto Invoicing & Payments</title>
+  <title>Tradazone — Transforming Payments in Africa</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,226 +23,738 @@
         extend: {
           colors: {
             brand: {
-              DEFAULT: '#5B21B6',
-              light: '#7C3AED',
-              dark: '#3B0764',
+              DEFAULT: '#3C3CEF',
+              dark:    '#2E2ED4',
+              light:   '#5A5AF5',
+              bg:      '#EDEDFD',
             },
+            tp:     '#1E293B',
+            ts:     '#64748B',
+            tm:     '#94A3B8',
+            bdr:    '#E2E8F0',
+            page:   '#F5F6FA',
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: {
+            site: '1200px',
           },
         },
       },
     }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
-    html { scroll-behavior: smooth; }
-    .gradient-text {
-      background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    /* ── Reset ───────────────────────────────────────────────── */
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    *, *::before, *::after { border-radius: 0 !important; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #1E293B;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      width: 100%;
     }
-    .hero-bg {
-      background: radial-gradient(ellipse at 60% 0%, rgba(124,58,237,0.15) 0%, transparent 60%),
-                  radial-gradient(ellipse at 10% 80%, rgba(6,182,212,0.1) 0%, transparent 50%);
+
+    /* ── Fluid hero headline — scales with viewport ──────────── */
+    .hero-heading {
+      font-size: clamp(1.75rem, 3.5vw, 3.25rem);
+      line-height: 1.15;
+      max-width: 630px;
+    }
+
+    /* ── Fluid section headings ──────────────────────────────── */
+    .section-heading {
+      font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    }
+
+    /* ── Full-width sections — no max-width on the section el ── */
+    section { width: 100%; }
+
+    /* ── Nav: smooth transition between hero and scrolled states */
+    nav { transition: padding-top 0.3s ease; }
+    .nav-rectangle { transition: margin 0.3s ease; }
+
+    /* Scrolled state: full-width bar, flush to top */
+    nav.scrolled { padding-top: 0 !important; }
+    nav.scrolled .nav-rectangle {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* ── Pill shape (overrides the global radius reset) ─────── */
+    .pill { border-radius: 9999px !important; }
+
+    /* ── Nav pill hover ──────────────────────────────────────── */
+    .nav-pill-link {
+      transition: background 0.18s, color 0.18s;
+      text-decoration: none;
+    }
+    .nav-pill-link:hover { background: #C8C8F8 !important; }
+
+    /* ── Buttons ─────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: #3C3CEF;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.625rem 1.5rem;
+      transition: background 0.18s;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #2E2ED4; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      background: #fff;
+      color: #3C3CEF;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.625rem 1.5rem;
+      border: 1.5px solid #3C3CEF;
+      transition: background 0.18s;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: #EDEDFD; }
+
+    /* ── Section dividers ────────────────────────────────────── */
+    .section-divider { border-top: 1px solid #E2E8F0; }
+
+    /* ── Feature sections ────────────────────────────────────── */
+    .feature-img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── Why Tradazone cards ─────────────────────────────────── */
+    .why-card-icon {
+      width: 20px;
+      height: 20px;
+      background: rgba(255,255,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
   </style>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans antialiased">
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur border-b border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 font-bold text-xl text-white">
-        <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-white text-sm font-black">T</div>
-        Tradazone
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════════════ -->
+<!-- Outer nav: full-width fixed, transparent gap on desktop, white bg fills edge-to-edge -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white pt-6 md:pt-10">
+  <!-- Nav rectangle — same horizontal inset as all page sections -->
+  <div class="nav-rectangle mx-6 sm:mx-10 lg:mx-16 xl:mx-24" style="background: #EDEDFD;">
+
+    <div class="px-6 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center no-underline" aria-label="Tradazone home">
+        <img src="./assets/logo-blue.svg" alt="Tradazone" style="height: 28px; width: auto;" />
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-        <a href="#features" class="hover:text-white transition-colors">Features</a>
-        <a href="#how-it-works" class="hover:text-white transition-colors">How it works</a>
-        <a href="#networks" class="hover:text-white transition-colors">Networks</a>
+
+      <!-- Desktop: links + button -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="./about.html"
+           class="text-sm font-medium text-tp hover:text-brand transition-colors no-underline">About</a>
+        <a href="mailto:hello@tradazone.com"
+           class="text-sm font-medium text-tp hover:text-brand transition-colors no-underline">Contact us</a>
+        <a href="https://blockora-dex.github.io/Tradazone/signup" class="btn-primary">Launch the app</a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="https://blockora-dex.github.io/Tradazone/signin" class="text-sm font-medium text-gray-300 hover:text-white transition-colors hidden sm:block">Sign in</a>
-        <a href="https://blockora-dex.github.io/Tradazone/signup" class="text-sm font-semibold bg-brand hover:bg-brand-light text-white px-4 py-2 rounded-lg transition-colors">
-          Get started
-        </a>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn"
+              class="md:hidden p-2 -mr-2 text-tp"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false">
+        <svg id="menu-open-icon" width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+          <rect y="0"    width="22" height="2.5" fill="#3C3CEF"/>
+          <rect y="6.75" width="22" height="2.5" fill="#3C3CEF"/>
+          <rect y="13.5" width="22" height="2.5" fill="#3C3CEF"/>
+        </svg>
+        <svg id="menu-close-icon" class="hidden" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M2 2L18 18M18 2L2 18" stroke="#3C3CEF" stroke-width="2.5"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 sm:px-10 py-5"
+         style="border-top: 1px solid #D8D8FC;">
+      <a href="./about.html"
+         class="block py-3 text-sm font-medium text-tp border-b hover:text-brand transition-colors"
+         style="border-color: #D8D8FC;">About</a>
+      <a href="mailto:hello@tradazone.com"
+         class="block py-3 text-sm font-medium text-tp border-b hover:text-brand transition-colors"
+         style="border-color: #D8D8FC;">Contact us</a>
+      <a href="https://blockora-dex.github.io/Tradazone/signup"
+         class="btn-primary justify-center mt-3">Launch the app</a>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════ -->
+<section class="bg-white overflow-x-hidden">
+  <!-- Full-viewport-width grid — no max-width cap on the hero -->
+  <div class="grid md:grid-cols-2">
+
+    <!-- Left copy: responsive padding aligns text with rest of page content -->
+    <div class="flex items-center
+                px-6 sm:px-10 lg:px-16 xl:px-24
+                pt-24 pb-16 md:pt-[180px] md:pb-20">
+      <div class="w-full">
+        <h1 class="hero-heading font-bold text-brand mb-6">
+          Transforming payment in Africa with cryptocurrency
+        </h1>
+        <p class="text-base text-ts leading-relaxed mb-8"
+           style="max-width: 28rem;">
+          Tradazone makes receiving local and international payments easier for
+          African entrepreneurs using cryptocurrency.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://blockora-dex.github.io/Tradazone/signup" class="btn-primary">Launch the app</a>
+          <a href="mailto:hello@tradazone.com" class="btn-outline">Contact us</a>
+        </div>
       </div>
     </div>
-  </nav>
 
-  <!-- Hero -->
-  <section class="hero-bg pt-32 pb-24 px-6">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 bg-brand/10 border border-brand/30 text-brand-light text-xs font-semibold px-4 py-2 rounded-full mb-8">
-        <span class="w-2 h-2 rounded-full bg-brand-light animate-pulse"></span>
-        Multi-chain crypto payments
-      </div>
-      <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-        Invoice &amp; accept<br />
-        <span class="gradient-text">crypto payments</span>
-      </h1>
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-        Send professional invoices, create payment checkouts, and get paid directly into your wallet — on Ethereum, Stellar, and Starknet.
+    <!-- Right illustration: fills its column fully, no cutoff -->
+    <div class="hidden md:flex items-center justify-center overflow-hidden">
+      <img src="./assets/header-illustration.svg"
+           alt=""
+           role="presentation"
+           class="w-full"
+           style="height: auto; display: block;" />
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     EVERYTHING YOU NEED TO GET PAID
+══════════════════════════════════════════════════════════ -->
+<section id="features" class="section-divider py-16 md:py-20 bg-white">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24">
+
+    <div class="text-center mb-12">
+      <h2 class="section-heading font-bold text-tp mb-4">Everything you need to get paid</h2>
+      <p class="text-base text-ts max-w-xl mx-auto leading-relaxed">
+        Built for crypto-native merchants who want professional tools without the overhead.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="https://blockora-dex.github.io/Tradazone/signup" class="bg-brand hover:bg-brand-light text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg">
-          Start for free
-        </a>
-        <a href="#how-it-works" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg">
-          See how it works
-        </a>
-      </div>
     </div>
 
-    <!-- Hero visual: stats bar -->
-    <div class="max-w-4xl mx-auto mt-20 grid grid-cols-3 gap-6">
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center">
-        <div class="text-3xl font-bold text-white mb-1">3</div>
-        <div class="text-sm text-gray-400">Blockchain networks</div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Professional Invoices -->
+      <div class="border border-bdr hover:border-brand transition-colors p-7">
+        <div class="w-11 h-11 bg-brand-bg flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="3" y="1" width="14" height="18" stroke="#3C3CEF" stroke-width="1.5" stroke-linejoin="miter"/>
+            <line x1="6" y1="7" x2="14" y2="7" stroke="#3C3CEF" stroke-width="1.5"/>
+            <line x1="6" y1="10" x2="14" y2="10" stroke="#3C3CEF" stroke-width="1.5"/>
+            <line x1="6" y1="13" x2="10" y2="13" stroke="#3C3CEF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Professional Invoices</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          Create, send, and track invoices with PDF export and automated email
+          delivery. Customers pay directly in crypto.
+        </p>
       </div>
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center">
-        <div class="text-3xl font-bold text-white mb-1">0%</div>
-        <div class="text-sm text-gray-400">Platform fee</div>
+
+      <!-- Payment Checkouts -->
+      <div class="border border-bdr hover:border-brand transition-colors p-7">
+        <div class="w-11 h-11 bg-brand-bg flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M8 12C8.5 13 10 14.5 12 14L15 11C16 10 16 8 14 7L13 6C12 5 10 5 9 6"
+                  stroke="#3C3CEF" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+            <path d="M12 8C11.5 7 10 5.5 8 6L5 9C4 10 4 12 6 13L7 14C8 15 10 15 11 14"
+                  stroke="#3C3CEF" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Payment Checkouts</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          Generate shareable payment links in seconds. Customers connect their
+          wallet and pay — no account needed.
+        </p>
       </div>
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center">
-        <div class="text-3xl font-bold text-white mb-1">∞</div>
-        <div class="text-sm text-gray-400">Invoices &amp; checkouts</div>
+
+      <!-- Real-time Payment Detection -->
+      <div class="border border-bdr hover:border-brand transition-colors p-7">
+        <div class="w-11 h-11 bg-brand-bg flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M11 2L4 11H10L9 18L16 9H10L11 2Z"
+                  stroke="#3C3CEF" stroke-width="1.5" stroke-linejoin="miter" fill="none"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Real-time Payment Detection</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          Payments are detected on-chain the moment they land. No polling delays,
+          no manual confirmation.
+        </p>
       </div>
+
+      <!-- Customer Management -->
+      <div class="border border-bdr hover:border-brand transition-colors p-7">
+        <div class="w-11 h-11 bg-brand-bg flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M7.5 9C9.43 9 11 7.43 11 5.5C11 3.57 9.43 2 7.5 2C5.57 2 4 3.57 4 5.5C4 7.43 5.57 9 7.5 9Z"
+                  stroke="#3C3CEF" stroke-width="1.5" stroke-linejoin="miter"/>
+            <path d="M2 17C2 13.7 4.5 11 7.5 11C10.5 11 13 13.7 13 17"
+                  stroke="#3C3CEF" stroke-width="1.5" stroke-linecap="square"/>
+            <path d="M14 7C15.1 7 16 7.9 16 9C16 10.1 15.1 11 14 11"
+                  stroke="#3C3CEF" stroke-width="1.5" stroke-linecap="square"/>
+            <path d="M14 13C16.2 13 18 14.3 18 17"
+                  stroke="#3C3CEF" stroke-width="1.5" stroke-linecap="square"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Customer Management</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          Maintain a clean client directory. Add contacts, track payment history,
+          and send invoices with one click.
+        </p>
+      </div>
+
+      <!-- Product Catalog -->
+      <div class="border border-bdr hover:border-brand transition-colors p-7">
+        <div class="w-11 h-11 bg-brand-bg flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="2"  y="2"  width="7" height="7"  stroke="#3C3CEF" stroke-width="1.5" stroke-linejoin="miter"/>
+            <rect x="11" y="2"  width="7" height="7"  stroke="#3C3CEF" stroke-width="1.5" stroke-linejoin="miter"/>
+            <rect x="2"  y="11" width="7" height="7"  stroke="#3C3CEF" stroke-width="1.5" stroke-linejoin="miter"/>
+            <rect x="11" y="11" width="7" height="7"  stroke="#3C3CEF" stroke-width="1.5" stroke-linejoin="miter"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Product Catalog</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          Save products and services to your catalog. Add them to invoices
+          instantly without re-entering details.
+        </p>
+      </div>
+
+      <!-- Wallet-based Auth -->
+      <div class="border border-bdr hover:border-brand transition-colors p-7">
+        <div class="w-11 h-11 bg-brand-bg flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="3" y="9" width="14" height="10" stroke="#3C3CEF" stroke-width="1.5" stroke-linejoin="miter"/>
+            <path d="M6.5 9V6C6.5 4.07 8.07 2.5 10 2.5C11.93 2.5 13.5 4.07 13.5 6V9"
+                  stroke="#3C3CEF" stroke-width="1.5" stroke-linecap="square"/>
+            <rect x="8.5" y="12.5" width="3" height="3" fill="#3C3CEF"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Wallet-based Auth</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          No passwords, no email signup. Sign in with your existing crypto wallet
+          — your keys, your account.
+        </p>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Features -->
-  <section id="features" class="py-24 px-6 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-white mb-4">Everything you need to get paid</h2>
-        <p class="text-gray-400 text-lg max-w-xl mx-auto">Built for crypto-native merchants who want professional tools without the overhead.</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
-          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">📄</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Professional Invoices</h3>
-          <p class="text-gray-400 leading-relaxed">Create, send, and track invoices with PDF export and automated email delivery. Customers pay directly in crypto.</p>
-        </div>
 
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
-          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">🔗</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Payment Checkouts</h3>
-          <p class="text-gray-400 leading-relaxed">Generate shareable payment links in seconds. Customers connect their wallet and pay — no account needed.</p>
-        </div>
+<!-- ══════════════════════════════════════════════════════════
+     FEATURE 1 — Send Invoices with Ease
+══════════════════════════════════════════════════════════ -->
+<section class="py-16 md:py-20 bg-brand border-t border-white/10">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
-          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">⚡</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Real-time Payment Detection</h3>
-          <p class="text-gray-400 leading-relaxed">Payments are detected on-chain the moment they land. No polling delays, no manual confirmation.</p>
-        </div>
-
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
-          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">👥</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Customer Management</h3>
-          <p class="text-gray-400 leading-relaxed">Maintain a clean client directory. Add contacts, track payment history, and send invoices with one click.</p>
-        </div>
-
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
-          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">📦</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Product Catalog</h3>
-          <p class="text-gray-400 leading-relaxed">Save products and services to your catalog. Add them to invoices instantly without re-entering details.</p>
-        </div>
-
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-brand/50 transition-colors">
-          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-5 text-2xl">🔐</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Wallet-based Auth</h3>
-          <p class="text-gray-400 leading-relaxed">No passwords, no email signup. Sign in with your existing crypto wallet — your keys, your account.</p>
-        </div>
-
-      </div>
+    <!-- Text (left on desktop, below on mobile) -->
+    <div class="order-2 md:order-1">
+      <h2 class="section-heading font-bold text-white leading-tight mb-5">
+        Send Invoices with Ease
+      </h2>
+      <p class="text-base text-white/70 leading-relaxed max-w-md">
+        Simply send an invoice to your customer using our seamless process,
+        and let the cryptocurrency payment flow directly into your account.
+      </p>
     </div>
-  </section>
 
-  <!-- How it works -->
-  <section id="how-it-works" class="py-24 px-6 bg-gray-900/50 border-t border-gray-800">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-white mb-4">How it works</h2>
-        <p class="text-gray-400 text-lg">From signup to paid in three steps.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-14 h-14 rounded-full bg-brand flex items-center justify-center text-white font-bold text-xl mx-auto mb-5">1</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Connect your wallet</h3>
-          <p class="text-gray-400">Sign in with MetaMask, Freighter, Lobstr, Argent, or Braavos. No registration form, no password.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-14 h-14 rounded-full bg-brand flex items-center justify-center text-white font-bold text-xl mx-auto mb-5">2</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Create an invoice or checkout</h3>
-          <p class="text-gray-400">Add line items, set an amount, and choose which wallet address receives the payment.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-14 h-14 rounded-full bg-brand flex items-center justify-center text-white font-bold text-xl mx-auto mb-5">3</div>
-          <h3 class="text-xl font-semibold text-white mb-3">Get paid on-chain</h3>
-          <p class="text-gray-400">Share the payment link. The customer pays with their wallet. Funds land directly in yours — no intermediary.</p>
-        </div>
-      </div>
+    <!-- Illustration (right on desktop, above on mobile) -->
+    <div class="order-1 md:order-2">
+      <img src="./assets/send-invoices.svg"
+           alt="Send invoices to customers and receive crypto payments"
+           class="feature-img" />
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Networks -->
-  <section id="networks" class="py-24 px-6 border-t border-gray-800">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-white mb-4">Multi-chain by design</h2>
-        <p class="text-gray-400 text-lg max-w-xl mx-auto">Your customers pay on their preferred chain. You receive funds on yours.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center hover:border-blue-500/50 transition-colors">
-          <div class="text-5xl mb-4">⟠</div>
-          <h3 class="text-xl font-semibold text-white mb-2">Ethereum</h3>
-          <p class="text-gray-400 text-sm">EVM-compatible. Accept ETH via MetaMask, Phantom, Coinbase Wallet, and any EIP-6963 provider.</p>
-        </div>
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center hover:border-cyan-500/50 transition-colors">
-          <div class="text-5xl mb-4">✦</div>
-          <h3 class="text-xl font-semibold text-white mb-2">Stellar</h3>
-          <p class="text-gray-400 text-sm">Fast, low-fee payments in XLM. Works with Freighter and Lobstr wallet extensions.</p>
-        </div>
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center hover:border-purple-500/50 transition-colors">
-          <div class="text-5xl mb-4">◈</div>
-          <h3 class="text-xl font-semibold text-white mb-2">Starknet</h3>
-          <p class="text-gray-400 text-sm">ZK-rollup scalability. Accept STRK via Argent X and Braavos wallets.</p>
-        </div>
-      </div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FEATURE 2 — Create Checkout Links
+══════════════════════════════════════════════════════════ -->
+<section class="py-16 md:py-20 bg-brand border-t border-white/10">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+    <!-- Illustration (left on desktop, above on mobile) -->
+    <div>
+      <img src="./assets/checkout-links.svg"
+           alt="Create checkout links and get paid anywhere"
+           class="feature-img" />
     </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="py-24 px-6 border-t border-gray-800">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-5xl font-extrabold text-white mb-5">Ready to get paid?</h2>
-      <p class="text-gray-400 text-xl mb-10">Connect your wallet and send your first invoice in under two minutes.</p>
-      <a href="https://blockora-dex.github.io/Tradazone/signup" class="inline-block bg-brand hover:bg-brand-light text-white font-semibold px-10 py-5 rounded-xl transition-colors text-xl">
-        Launch the app →
+    <!-- Text (right on desktop, below on mobile) -->
+    <div>
+      <h2 class="section-heading font-bold text-white leading-tight mb-5">
+        Create Checkout Links and Get Paid Anywhere
+      </h2>
+      <p class="text-base text-white/70 leading-relaxed max-w-md">
+        Simply generate a checkout link and share it with your customers,
+        allowing you to get paid from anywhere in the world, hassle-free.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FEATURE 3 — Manage Products & Customers
+══════════════════════════════════════════════════════════ -->
+<section class="py-16 md:py-20 bg-brand border-t border-white/10">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+    <!-- Text (left on desktop, below on mobile) -->
+    <div class="order-2 md:order-1">
+      <h2 class="section-heading font-bold text-white leading-tight mb-5">
+        Manage your products and customers in one place.
+      </h2>
+      <p class="text-base text-white/70 leading-relaxed max-w-md">
+        Stay organized, streamline your operations, save time, and provide
+        better service — all from a single platform.
+      </p>
+    </div>
+
+    <!-- Illustration (right on desktop, above on mobile) -->
+    <div class="order-1 md:order-2">
+      <img src="./assets/manage-products.svg"
+           alt="Manage products and customers from one dashboard"
+           class="feature-img" />
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FEATURE 4 — Never Miss an Update
+══════════════════════════════════════════════════════════ -->
+<section class="py-16 md:py-20 bg-brand border-t border-white/10">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+    <!-- Illustration (left on desktop, above on mobile) -->
+    <div>
+      <img src="./assets/never-miss-update.svg"
+           alt="Get notified when invoices are viewed or become overdue"
+           class="feature-img" />
+    </div>
+
+    <!-- Text (right on desktop, below on mobile) -->
+    <div>
+      <h2 class="section-heading font-bold text-white leading-tight mb-5">
+        Never Miss an Update
+      </h2>
+      <p class="text-base text-white/70 leading-relaxed max-w-md">
+        Get notified immediately when a client views their invoice or when it
+        becomes overdue, helping you stay on top of your business.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════════════════════ -->
+<section id="how-it-works" class="section-divider py-16 md:py-20 bg-white">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24">
+
+    <div class="text-center mb-14">
+      <h2 class="section-heading font-bold text-tp mb-4">How it works</h2>
+      <p class="text-base text-ts">From signup to paid in three steps.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10 md:gap-0 relative">
+
+      <!-- Connector lines (desktop only) -->
+      <div class="hidden md:block absolute top-5 left-[calc(50%/3+20px)] right-[calc(50%/3+20px)] h-px bg-bdr" aria-hidden="true"></div>
+
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center text-center md:px-10">
+        <div class="w-10 h-10 bg-brand flex items-center justify-center text-white font-bold text-sm mb-6 relative z-10 shrink-0">
+          1
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Connect your wallet</h3>
+        <p class="text-sm text-ts leading-relaxed max-w-xs">
+          Sign in with MetaMask, Freighter, Lobstr, Argent, or Braavos.
+          No registration form, no password.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center text-center md:px-10">
+        <div class="w-10 h-10 bg-brand flex items-center justify-center text-white font-bold text-sm mb-6 relative z-10 shrink-0">
+          2
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Create an invoice or checkout</h3>
+        <p class="text-sm text-ts leading-relaxed max-w-xs">
+          Add line items, set an amount, and choose which wallet address
+          receives the payment.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center text-center md:px-10">
+        <div class="w-10 h-10 bg-brand flex items-center justify-center text-white font-bold text-sm mb-6 relative z-10 shrink-0">
+          3
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Get paid on-chain</h3>
+        <p class="text-sm text-ts leading-relaxed max-w-xs">
+          Share the payment link. Your customer pays with their wallet.
+          Funds land directly in yours — no intermediary.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     MULTI-CHAIN BY DESIGN
+══════════════════════════════════════════════════════════ -->
+<section id="networks" class="section-divider py-16 md:py-20 bg-white">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24">
+
+    <div class="text-center mb-12">
+      <h2 class="section-heading font-bold text-tp mb-4">Multi-chain by design</h2>
+      <p class="text-base text-ts max-w-xl mx-auto leading-relaxed">
+        Your customers pay on their preferred chain. You receive funds on yours.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <!-- Ethereum -->
+      <div class="border border-bdr p-8 text-center transition-colors"
+           style="transition: border-color 0.18s;"
+           onmouseenter="this.style.borderColor='#627EEA'"
+           onmouseleave="this.style.borderColor=''">
+        <div class="w-14 h-14 mx-auto flex items-center justify-center mb-5" style="background:#EEF2FF;">
+          <svg width="28" height="44" viewBox="0 0 28 44" fill="none" aria-hidden="true">
+            <path d="M14 0L13.7 1L0 22.5L14 30.2L28 22.5L14 0Z" fill="#627EEA"/>
+            <path d="M14 0L0 22.5L14 30.2V0Z" fill="#627EEA" fill-opacity="0.6"/>
+            <path d="M14 32.9L0 25.2L14 44L28 25.2L14 32.9Z" fill="#627EEA"/>
+            <path d="M14 32.9L0 25.2L14 44V32.9Z" fill="#627EEA" fill-opacity="0.6"/>
+            <path d="M14 27.6L28 19.9L14 13V27.6Z" fill="#627EEA" fill-opacity="0.2"/>
+            <path d="M0 19.9L14 27.6V13L0 19.9Z" fill="#627EEA" fill-opacity="0.6"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Ethereum</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          EVM-compatible. Accept ETH via MetaMask, Phantom, Coinbase Wallet,
+          and any EIP-6963 provider.
+        </p>
+      </div>
+
+      <!-- Stellar -->
+      <div class="border border-bdr p-8 text-center transition-colors"
+           style="transition: border-color 0.18s;"
+           onmouseenter="this.style.borderColor='#08B5E5'"
+           onmouseleave="this.style.borderColor=''">
+        <div class="w-14 h-14 mx-auto flex items-center justify-center mb-5" style="background:#E0F9FF;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 3L18.5 11H27L20.3 15.8L22.8 24L16 19.2L9.2 24L11.7 15.8L5 11H13.5L16 3Z"
+                  fill="#08B5E5" fill-opacity="0.2" stroke="#08B5E5" stroke-width="1.5" stroke-linejoin="miter"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Stellar</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          Fast, low-fee payments in XLM. Works with Freighter and Lobstr
+          wallet extensions.
+        </p>
+      </div>
+
+      <!-- Starknet -->
+      <div class="border border-bdr p-8 text-center transition-colors"
+           style="transition: border-color 0.18s;"
+           onmouseenter="this.style.borderColor='#EC796B'"
+           onmouseleave="this.style.borderColor=''">
+        <div class="w-14 h-14 mx-auto flex items-center justify-center mb-5" style="background:#FDF0EE;">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+            <rect x="15" y="1.5" width="18" height="18" transform="rotate(45 15 1.5)"
+                  fill="#EC796B" fill-opacity="0.15" stroke="#EC796B" stroke-width="1.5" stroke-linejoin="miter"/>
+            <rect x="15" y="9" width="8" height="8" transform="rotate(45 15 9)"
+                  fill="#EC796B"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-semibold text-tp mb-2">Starknet</h3>
+        <p class="text-sm text-ts leading-relaxed">
+          ZK-rollup scalability. Accept STRK via Argent X and Braavos wallets.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     WHY TRADAZONE
+══════════════════════════════════════════════════════════ -->
+<section class="py-16 md:py-20 bg-brand">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24">
+    <h2 class="section-heading font-bold text-white mb-12">Why Tradazone</h2>
+
+    <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+
+      <!-- Faster Transactions -->
+      <div>
+        <div class="flex items-start gap-3 mb-3">
+          <span class="why-card-icon mt-0.5" aria-hidden="true">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+              <path d="M1 5L4.5 8.5L11 1" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+            </svg>
+          </span>
+          <h3 class="text-base font-semibold text-white">Faster Transactions</h3>
+        </div>
+        <p class="text-white/70 text-sm leading-relaxed pl-9">
+          We enable cryptocurrency transactions, removing delays associated with
+          traditional banking systems — especially for cross-border payments.
+        </p>
+      </div>
+
+      <!-- Lower Fees -->
+      <div>
+        <div class="flex items-start gap-3 mb-3">
+          <span class="why-card-icon mt-0.5" aria-hidden="true">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+              <path d="M1 5L4.5 8.5L11 1" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+            </svg>
+          </span>
+          <h3 class="text-base font-semibold text-white">Lower Fees</h3>
+        </div>
+        <p class="text-white/70 text-sm leading-relaxed pl-9">
+          Tradazone reduces transaction costs, making cryptocurrency payments
+          affordable and efficient, streamlining the entire payment process for users.
+        </p>
+      </div>
+
+      <!-- Global Accessibility -->
+      <div>
+        <div class="flex items-start gap-3 mb-3">
+          <span class="why-card-icon mt-0.5" aria-hidden="true">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+              <path d="M1 5L4.5 8.5L11 1" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+            </svg>
+          </span>
+          <h3 class="text-base font-semibold text-white">Global Accessibility</h3>
+        </div>
+        <p class="text-white/70 text-sm leading-relaxed pl-9">
+          Tradazone lets you accept payments globally, eliminating geographic
+          and currency barriers for seamless, cross-border transactions.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     READY TO GET PAID
+══════════════════════════════════════════════════════════ -->
+<section class="section-divider py-20 md:py-28 bg-white">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold text-tp mb-5">Ready to get paid?</h2>
+    <p class="text-base text-ts mb-10 max-w-sm mx-auto leading-relaxed">
+      Connect your wallet and send your first invoice in under two minutes.
+    </p>
+    <a href="https://blockora-dex.github.io/Tradazone/signup"
+       class="btn-primary inline-flex"
+       style="padding: 0.875rem 2.5rem; font-size: 1rem;">
+      Launch the app →
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer class="bg-brand border-t border-white/10 py-10">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center no-underline" aria-label="Tradazone home">
+        <img src="./assets/logo-white.svg" alt="Tradazone" style="height: 28px; width: auto;" />
       </a>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-gray-800 py-10 px-6">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2 font-bold text-gray-400">
-        <div class="w-7 h-7 rounded-md bg-brand flex items-center justify-center text-white text-xs font-black">T</div>
-        Tradazone
-      </div>
-      <div class="flex gap-8 text-sm text-gray-500">
-        <a href="https://blockora-dex.github.io/Tradazone" class="hover:text-white transition-colors">App</a>
-        <a href="https://github.com/Blockora-dex" class="hover:text-white transition-colors">GitHub</a>
-      </div>
-      <div class="text-sm text-gray-600">© 2025 Tradazone. All rights reserved.</div>
-    </div>
-  </footer>
+      <!-- Copyright -->
+      <p class="text-white/50 text-sm order-last md:order-none">Copyright 2025</p>
 
+      <!-- Nav links + Social -->
+      <div class="flex items-center gap-6 flex-wrap justify-center">
+        <a href="./about.html"
+           class="text-sm text-white/70 hover:text-white transition-colors">About</a>
+        <a href="mailto:hello@tradazone.com"
+           class="text-sm text-white/70 hover:text-white transition-colors">Contact Us</a>
+
+        <!-- Social icons -->
+        <div class="flex items-center gap-2">
+          <!-- X (Twitter) -->
+          <a href="https://twitter.com/tradazone" target="_blank" rel="noopener noreferrer"
+             class="w-8 h-8 bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+             aria-label="Tradazone on X (Twitter)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://facebook.com/tradazone" target="_blank" rel="noopener noreferrer"
+             class="w-8 h-8 bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+             aria-label="Tradazone on Facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/company/tradazone" target="_blank" rel="noopener noreferrer"
+             class="w-8 h-8 bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+             aria-label="Tradazone on LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://instagram.com/tradazone" target="_blank" rel="noopener noreferrer"
+             class="w-8 h-8 bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+             aria-label="Tradazone on Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.163 12 18.163s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script src="./js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Tradazone — We are building a cryptocurrency-powered solution that empowers African entrepreneurs." />
+  <meta property="og:title" content="About — Tradazone" />
+  <meta property="og:description" content="We are building a cryptocurrency-powered solution that empowers African entrepreneurs." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>About Us — Tradazone</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#3C3CEF',
+              dark:    '#2E2ED4',
+              light:   '#5A5AF5',
+              bg:      '#EDEDFD',
+            },
+            tp:   '#1E293B',
+            ts:   '#64748B',
+            tm:   '#94A3B8',
+            bdr:  '#E2E8F0',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: {
+            site: '1200px',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* ── Reset ───────────────────────────────────────────────── */
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    *, *::before, *::after { border-radius: 0 !important; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #1E293B;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* ── Fluid headings ──────────────────────────────────────── */
+    .page-heading  { font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.15; }
+    .section-heading { font-size: clamp(1.5rem, 2.5vw, 2.5rem); }
+
+    /* ── Full-width sections ─────────────────────────────────── */
+    section { width: 100%; }
+
+    /* ── Nav: smooth transition between hero and scrolled states */
+    nav { transition: padding-top 0.3s ease; }
+    .nav-rectangle { transition: margin 0.3s ease; }
+
+    /* Scrolled state: full-width bar, flush to top */
+    nav.scrolled { padding-top: 0 !important; }
+    nav.scrolled .nav-rectangle {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* ── Pill shape ──────────────────────────────────────────── */
+    .pill { border-radius: 9999px !important; }
+
+    /* ── Nav pill hover ──────────────────────────────────────── */
+    .nav-pill-link {
+      transition: background 0.18s, color 0.18s;
+      text-decoration: none;
+    }
+    .nav-pill-link:hover { background: #C8C8F8 !important; }
+
+    /* ── Buttons ─────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: #3C3CEF;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.625rem 1.5rem;
+      transition: background 0.18s;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #2E2ED4; }
+
+    /* ── Section dividers ────────────────────────────────────── */
+    .section-divider { border-top: 1px solid #E2E8F0; }
+
+    /* ── Accordion ───────────────────────────────────────────── */
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1.125rem 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #E2E8F0;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .accordion-item:first-child .accordion-header {
+      border-top: 1px solid #E2E8F0;
+    }
+    .accordion-icon {
+      font-size: 20px;
+      line-height: 1;
+      color: #3C3CEF;
+      font-weight: 300;
+      flex-shrink: 0;
+      margin-left: 1rem;
+      transition: transform 0.25s;
+    }
+    .accordion-item.open .accordion-icon {
+      transform: rotate(45deg);
+    }
+    .accordion-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+    .accordion-content-inner {
+      padding: 1rem 0 1.25rem;
+    }
+
+    /* ── Active nav pill (current page) ─────────────────────── */
+    .nav-pill-link.active { background: #C8C8F8 !important; }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white pt-6 md:pt-10">
+  <!-- Nav rectangle — same horizontal inset as all page sections -->
+  <div class="nav-rectangle mx-6 sm:mx-10 lg:mx-16 xl:mx-24" style="background: #EDEDFD;">
+
+    <div class="px-6 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center no-underline" aria-label="Tradazone home">
+        <img src="./assets/logo-blue.svg" alt="Tradazone" style="height: 28px; width: auto;" />
+      </a>
+
+      <!-- Desktop: links + button -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="./about.html"
+           class="text-sm font-semibold text-brand no-underline">About</a>
+        <a href="mailto:hello@tradazone.com"
+           class="text-sm font-medium text-tp hover:text-brand transition-colors no-underline">Contact us</a>
+        <a href="https://blockora-dex.github.io/Tradazone/signup" class="btn-primary">Launch the app</a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn"
+              class="md:hidden p-2 -mr-2 text-tp"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false">
+        <svg id="menu-open-icon" width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+          <rect y="0"    width="22" height="2.5" fill="#3C3CEF"/>
+          <rect y="6.75" width="22" height="2.5" fill="#3C3CEF"/>
+          <rect y="13.5" width="22" height="2.5" fill="#3C3CEF"/>
+        </svg>
+        <svg id="menu-close-icon" class="hidden" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M2 2L18 18M18 2L2 18" stroke="#3C3CEF" stroke-width="2.5"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 sm:px-10 py-5"
+         style="border-top: 1px solid #D8D8FC;">
+      <a href="./about.html"
+         class="block py-3 text-sm font-semibold text-brand border-b"
+         style="border-color: #D8D8FC;">About</a>
+      <a href="mailto:hello@tradazone.com"
+         class="block py-3 text-sm font-medium text-tp border-b hover:text-brand transition-colors"
+         style="border-color: #D8D8FC;">Contact us</a>
+      <a href="https://blockora-dex.github.io/Tradazone/signup"
+         class="btn-primary justify-center mt-3">Launch the app</a>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════ -->
+<section class="bg-white">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24 pt-24 pb-16 md:pt-[200px] md:pb-20">
+  <div class="max-w-[760px] mx-auto text-center">
+    <h1 class="page-heading font-bold text-brand mb-8">
+      We are building a cryptocurrency-powered solution that empowers
+      African entrepreneurs
+    </h1>
+    <a href="https://blockora-dex.github.io/Tradazone/signup" class="btn-primary inline-flex">
+      Launch the app
+    </a>
+  </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     ABOUT US
+══════════════════════════════════════════════════════════ -->
+<section class="section-divider py-16 md:py-20 bg-white">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24 grid md:grid-cols-2 gap-12 md:gap-20">
+
+    <!-- Left: label + pull quote -->
+    <div>
+      <p class="text-xs font-semibold text-brand uppercase tracking-widest mb-5">About us</p>
+      <p class="text-xl md:text-2xl font-semibold text-tp leading-snug">
+        We are committed to empowering financial freedom across Africa through
+        the transformative potential of cryptocurrency.
+      </p>
+    </div>
+
+    <!-- Right: body text -->
+    <div class="text-sm md:text-base text-ts leading-relaxed space-y-4">
+      <p>
+        We've observed that many African entrepreneurs face significant challenges
+        in conducting business with international clients; both within Africa and
+        globally. According to the World Bank, African businesses face some of the
+        highest remittance costs globally, with an average transaction fee of 8.2%,
+        far above the global average of 6.3%.
+      </p>
+      <p>
+        These costs, combined with currency exchange complexities and excessive
+        government taxes, create significant barriers for entrepreneurs seeking to
+        expand internationally.
+      </p>
+      <p>
+        Additionally, a report by McKinsey highlights that only 20% of African small
+        and medium-sized enterprises (SMEs) have access to trade finance, further
+        impeding the challenges of operating internationally. These issues make it
+        difficult for many entrepreneurs to receive payments from international
+        clients, leading to a loss of trust and missed opportunities for collaboration.
+      </p>
+      <p>
+        At Tradazone, we believe in breaking these barriers and have developed a
+        solution to address the pain points of our platform. For example,
+        cryptocurrency transactions reduce cross-border payment costs by up to 90%
+        compared to traditional methods, according to a study by Deloitte.
+      </p>
+      <p>
+        Our solution enables entrepreneurs to send and receive payments seamlessly
+        while offering additional features designed to enhance their business
+        operations and overall experience.
+      </p>
+      <p>
+        Tradazone is here to empower entrepreneurs, helping them overcome financial
+        limitations and unlock new opportunities in the global marketplace.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     OUR VALUES
+══════════════════════════════════════════════════════════ -->
+<section class="section-divider py-16 md:py-20 bg-white">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24 grid md:grid-cols-2 gap-12 md:gap-20">
+
+    <!-- Left: heading -->
+    <div>
+      <p class="text-xs font-semibold text-brand uppercase tracking-widest mb-5">Our values</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-tp leading-snug">
+        We are driven by the goal of aligning our decisions with the core
+        principles that define our purpose and propel our progress.
+      </h2>
+    </div>
+
+    <!-- Right: accordion -->
+    <div>
+
+      <!-- Empowerment -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="text-sm font-semibold text-tp">Empowerment</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-content" role="region">
+          <div class="accordion-content-inner">
+            <p class="text-sm text-ts leading-relaxed">
+              We cultivate an empowering culture that provides employees with
+              the tools, resources, and support needed to reach their highest
+              potential for growth and success.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transparency -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="text-sm font-semibold text-tp">Transparency</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-content" role="region">
+          <div class="accordion-content-inner">
+            <p class="text-sm text-ts leading-relaxed">
+              Share your work regularly. Actively invite feedback. Address tough,
+              honest, and sometimes uncomfortable conversations promptly — don't
+              let them weigh on you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Centered -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="text-sm font-semibold text-tp">Customer centered</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-content" role="region">
+          <div class="accordion-content-inner">
+            <p class="text-sm text-ts leading-relaxed">
+              Put the customer first. Actively seek their feedback. Address
+              concerns openly, quickly, and crisply. Prioritize their needs in
+              every decision.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quality -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="text-sm font-semibold text-tp">Quality</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-content" role="region">
+          <div class="accordion-content-inner">
+            <p class="text-sm text-ts leading-relaxed">
+              Strive for excellence in everything you do. We are committed to
+              investing in our staff and continuously innovating in our products
+              and services while striving to create meaningful impact for all.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Honesty and Integrity -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="text-sm font-semibold text-tp">Honesty and Integrity</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-content" role="region">
+          <div class="accordion-content-inner">
+            <p class="text-sm text-ts leading-relaxed">
+              We place a high priority on ethical conduct in all our endeavors.
+              By consistently embodying honesty, fairness, and strong moral
+              values, we aim to cultivate enduring and trustworthy relationships
+              with all our stakeholders.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer class="bg-brand border-t border-white/10 py-10">
+  <div class="px-6 sm:px-10 lg:px-16 xl:px-24">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center no-underline" aria-label="Tradazone home">
+        <img src="./assets/logo-white.svg" alt="Tradazone" style="height: 28px; width: auto;" />
+      </a>
+
+      <!-- Copyright -->
+      <p class="text-white/50 text-sm order-last md:order-none">Copyright 2025</p>
+
+      <!-- Nav links + Social -->
+      <div class="flex items-center gap-6 flex-wrap justify-center">
+        <a href="./about.html"
+           class="text-sm text-white hover:text-white/80 transition-colors font-medium">About</a>
+        <a href="mailto:hello@tradazone.com"
+           class="text-sm text-white/70 hover:text-white transition-colors">Contact Us</a>
+
+        <!-- Social icons -->
+        <div class="flex items-center gap-2">
+          <a href="https://twitter.com/tradazone" target="_blank" rel="noopener noreferrer"
+             class="w-8 h-8 bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+             aria-label="Tradazone on X (Twitter)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com/tradazone" target="_blank" rel="noopener noreferrer"
+             class="w-8 h-8 bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+             aria-label="Tradazone on Facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/company/tradazone" target="_blank" rel="noopener noreferrer"
+             class="w-8 h-8 bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+             aria-label="Tradazone on LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com/tradazone" target="_blank" rel="noopener noreferrer"
+             class="w-8 h-8 bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+             aria-label="Tradazone on Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.163 12 18.163s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script src="./js/main.js"></script>
+</body>
+</html>
