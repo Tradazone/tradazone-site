@@ -168,7 +168,7 @@
            class="text-sm font-medium text-tp hover:text-brand transition-colors no-underline">About</a>
         <a href="mailto:hello@tradazone.com"
            class="text-sm font-medium text-tp hover:text-brand transition-colors no-underline">Contact us</a>
-        <a href="https://tradazone.github.io/Tradazone/signup" class="btn-primary">Launch the app</a>
+        <a href="https://tradazone.github.io/Tradazone/signin" class="btn-primary">Launch the app</a>
       </div>
 
       <!-- Mobile hamburger -->
@@ -196,7 +196,7 @@
       <a href="mailto:hello@tradazone.com"
          class="block py-3 text-sm font-medium text-tp border-b hover:text-brand transition-colors"
          style="border-color: #D8D8FC;">Contact us</a>
-      <a href="https://tradazone.github.io/Tradazone/signup"
+      <a href="https://tradazone.github.io/Tradazone/signin"
          class="btn-primary justify-center mt-3">Launch the app</a>
     </div>
 
@@ -225,7 +225,7 @@
           African entrepreneurs using cryptocurrency.
         </p>
         <div class="flex flex-wrap gap-3">
-          <a href="https://tradazone.github.io/Tradazone/signup" class="btn-primary">Launch the app</a>
+          <a href="https://tradazone.github.io/Tradazone/signin" class="btn-primary">Launch the app</a>
           <a href="mailto:hello@tradazone.com" class="btn-outline">Contact us</a>
         </div>
       </div>
@@ -683,7 +683,7 @@
     <p class="text-base text-ts mb-10 max-w-sm mx-auto leading-relaxed">
       Connect your wallet and send your first invoice in under two minutes.
     </p>
-    <a href="https://tradazone.github.io/Tradazone/signup"
+    <a href="https://tradazone.github.io/Tradazone/signin"
        class="btn-primary inline-flex"
        style="padding: 0.875rem 2.5rem; font-size: 1rem;">
       Launch the app →
@@ -756,5 +756,19 @@
 </footer>
 
 <script src="./js/main.js"></script>
+<script>
+  // Force a cache-busting navigation to the app on every click.
+  // Without this, the browser caches the GitHub Pages redirect URL and
+  // always serves the old index.html — so users see stale builds.
+  // Adding a unique timestamp makes every click a distinct URL → cache miss
+  // → fresh index.html is fetched → service worker installs → fixed permanently.
+  function launchApp(e) {
+    e.preventDefault();
+    window.location.href = 'https://tradazone.github.io/Tradazone/signin?_=' + Date.now();
+  }
+  document.querySelectorAll('a[href*="tradazone.github.io/Tradazone"]').forEach(function(el) {
+    el.addEventListener('click', launchApp);
+  });
+</script>
 </body>
 </html>
